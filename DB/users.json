@@ -1,0 +1,34 @@
+{
+  "managers": {
+    "ID000000": {
+      "name": "Pavlo",
+      "age": 20,
+      "sex": "male",
+      "phone": "+360684953513",
+      "email": "pablorybcuk@gmail.com",
+      "address": "Задвір'я, 16",
+      "hdate": "14.05.2025",
+      "seniority": 1,
+      "docs": {
+        "passport": "C:\\Users\\pablo\\OneDrive\\Документи\\203270.jpg",
+        "graduation": "C:\\Users\\pablo\\OneDrive\\Зображення\\Screenshots\\Screenshot (179).png",
+        "medcard": "C:\\Users\\pablo\\OneDrive\\Зображення\\Screenshots\\Screenshot (194).png",
+        "mil_accounting": "C:\\Users\\pablo\\OneDrive\\Зображення\\Screenshots\\Screenshot (242).png"
+      },
+      "duties": [],
+      "days": [],
+      "next_vacation": "14.05.2025",
+      "status": "normal",
+      "salary": 10000,
+      "isAdmin": "true",
+      "photo": "C:\\Users\\pablo\\OneDrive\\Зображення\\Camera Roll\\WIN_20250315_14_43_42_Pro.jpg",
+      "subordinates": [],
+      "actions_history": [],
+      "projects": [],
+      "workspace": "company",
+      "login": "Pryba2009",
+      "password": "1111",
+      "notes": ""
+    }
+  }
+}
