@@ -513,66 +513,66 @@ class Application(CTk):
                 Витягує дані з форми, створює новий об'єкт Employee і заповняє його властивості.
                 :return: None
                 """
-                # try:
-                new_emp = Employee("", 0, "", "",
-                                   "", "", "", 0,
-                                   {}, [], [], "", "",
-                                   0, "", "", "", "", 0)
-                if entries[0].get().strip().replace(" ", "").isalpha():
-                    new_emp.name = entries[0].get().strip().title()
-                else:
-                    raise ValueError("Name must be alphabetic")
-                new_emp.age = entries[1].get().strip()
-                new_emp.sex = "Male" if not sex_var.get() else "Female"
+                try:
+                    new_emp = Employee("", 0, "", "",
+                                       "", "", "", 0,
+                                       {}, [], [], "", "",
+                                       0, "", "", "", "", 0)
+                    if entries[0].get().strip().replace(" ", "").isalpha():
+                        new_emp.name = entries[0].get().strip().title()
+                    else:
+                        raise ValueError("Name must be alphabetic")
+                    new_emp.age = entries[1].get().strip()
+                    new_emp.sex = "Male" if not sex_var.get() else "Female"
 
-                new_emp.phone = entries[3].get().strip()
-                new_emp.email = entries[4].get().strip()
-                new_emp.address = entries[5].get().strip()
-                new_emp.hdate = entries[6].get()
-                new_emp.seniority = entries[7].get().strip()
-                if datetime.strptime(entries[8].get(), "%d.%m.%Y") > new_emp.hdate:
-                    new_emp.next_vacation = entries[8].get()
-                else:
-                    raise ValueError(
-                        "The date of the next vacation cannot coincide with or be earlier than the date of hire")
-                temp = []
-                for x in days_vars:
-                    if x.get():
-                        temp.append(x.get())
-                new_emp.days = temp
-                new_emp.status = entries[10].get().strip().capitalize() if entries[
-                    10].get().strip().capitalize() else "not mentioned"
-                new_emp.salary = entries[11].get().strip()
-                new_emp.workspace = entries[12].get().strip().capitalize() if entries[
-                    12].get().strip().capitalize() else "not mentioned"
-                new_emp.position = entries[13].get().strip().capitalize() if entries[
-                    13].get().strip() else "not mentioned"
-                new_emp.rate = entries[14].get()
-                if "not mentioned" not in (path_labels[0].cget("text"),
-                                           path_labels[1].cget("text"),
-                                           path_labels[2].cget("text"),
-                                           path_labels[3].cget("text"),
-                                           path_labels[4].cget("text")):
-                    new_emp.photo = path_labels[0].cget("text")
-                    new_emp.docs = {"passport": path_labels[1].cget("text"),
-                                    "graduation": path_labels[1].cget("text"),
-                                    "medcard": path_labels[3].cget("text"),
-                                    "mil_accounting": path_labels[4].cget("text")}
-                else:
-                    raise ValueError("All documents and photo required")
-                new_emp.staff_id = Application.generate_id([i.staff_id for i in self.employees])
-                self.employees.append(new_emp)
-                self.render_employees(employees_frame, filter_drop_down.get(), search_entry.get())
-                self.__admin.action_history = Action("HIRE",
-                                                     f"User {self.__admin.staff_id} hired the employee {
-                                                     new_emp.staff_id}", self.__admin.staff_id, datetime.strftime(
-                        datetime.now(), "%d.%m.%Y %H:%M"))
-                self.render_actions(self.recent_actions, True)
-                self.render_actions(self.tabs.tab("History").winfo_children()[0])
-                CTkMessagebox(self, message="The new employee was hired", title="Success", icon="check")
-                self.on_close(new_window)
-                # except Exception as e:
-                #     CTkMessagebox(new_window, message=str(e), title="Error", icon="cancel")
+                    new_emp.phone = entries[3].get().strip()
+                    new_emp.email = entries[4].get().strip()
+                    new_emp.address = entries[5].get().strip()
+                    new_emp.hdate = entries[6].get()
+                    new_emp.seniority = entries[7].get().strip()
+                    if datetime.strptime(entries[8].get(), "%d.%m.%Y") > new_emp.hdate:
+                        new_emp.next_vacation = entries[8].get()
+                    else:
+                        raise ValueError(
+                            "The date of the next vacation cannot coincide with or be earlier than the date of hire")
+                    temp = []
+                    for x in days_vars:
+                        if x.get():
+                            temp.append(x.get())
+                    new_emp.days = temp
+                    new_emp.status = entries[10].get().strip().capitalize() if entries[
+                        10].get().strip().capitalize() else "not mentioned"
+                    new_emp.salary = entries[11].get().strip()
+                    new_emp.workspace = entries[12].get().strip().capitalize() if entries[
+                        12].get().strip().capitalize() else "not mentioned"
+                    new_emp.position = entries[13].get().strip().capitalize() if entries[
+                        13].get().strip() else "not mentioned"
+                    new_emp.rate = entries[14].get()
+                    if "not mentioned" not in (path_labels[0].cget("text"),
+                                               path_labels[1].cget("text"),
+                                               path_labels[2].cget("text"),
+                                               path_labels[3].cget("text"),
+                                               path_labels[4].cget("text")):
+                        new_emp.photo = path_labels[0].cget("text")
+                        new_emp.docs = {"passport": path_labels[1].cget("text"),
+                                        "graduation": path_labels[1].cget("text"),
+                                        "medcard": path_labels[3].cget("text"),
+                                        "mil_accounting": path_labels[4].cget("text")}
+                    else:
+                        raise ValueError("All documents and photo required")
+                    new_emp.staff_id = Application.generate_id([i.staff_id for i in self.employees])
+                    self.employees.append(new_emp)
+                    self.render_employees(employees_frame, filter_drop_down.get(), search_entry.get())
+                    self.__admin.action_history = Action("HIRE",
+                                                         f"User {self.__admin.staff_id} hired the employee {
+                                                         new_emp.staff_id}", self.__admin.staff_id, datetime.strftime(
+                            datetime.now(), "%d.%m.%Y %H:%M"))
+                    self.render_actions(self.recent_actions, True)
+                    self.render_actions(self.tabs.tab("History").winfo_children()[0])
+                    CTkMessagebox(self, message="The new employee was hired", title="Success", icon="check")
+                    self.on_close(new_window)
+                except Exception as e:
+                    CTkMessagebox(new_window, message=str(e), title="Error", icon="cancel")
 
             new_window = CTk()
             self.opened_windows.append(new_window)
