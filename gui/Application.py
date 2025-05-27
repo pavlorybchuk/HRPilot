@@ -157,7 +157,7 @@ class Application(CTk):
         self.tabs.add("History")
         self.tabs.add("Notes")
         self.create_profile()
-        self.create_emploees_tab()
+        self.create_employees_tab()
         self.create_projects_tab()
         actions = self.tabs.tab("History")
         actions_wrapper = CTkScrollableFrame(actions, fg_color="transparent",
@@ -487,7 +487,7 @@ class Application(CTk):
         self.recent_actions.grid(row=3, column=0, columnspan=2)
         self.render_actions(self.recent_actions, True)
 
-    def create_emploees_tab(self) -> None:
+    def create_employees_tab(self) -> None:
         """
         Створює вкладку з працівниками, пошуком та фільтром для сортування працівників у списку.
         :return: None
