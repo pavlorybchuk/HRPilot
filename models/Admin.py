@@ -80,7 +80,7 @@ class Admin(Human):
         :return: None
         """
         for project in self._projects:
-            if project.name == project_name:
+            if project.name.lower() == project_name.lower():
                 self._projects.remove(project)
                 return
         raise IndexError("Project not found")

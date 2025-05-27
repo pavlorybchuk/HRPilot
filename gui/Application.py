@@ -375,7 +375,7 @@ class Application(CTk):
                                             fg_color=("#C5D86D", "#BBD5ED"), hover_color=("#B8D04E", "#9EC3E5"),
                                             text_color="black")
                     path_chooser = CTkButton(path_wrapper, text="Change", width=130, height=40, font=("Arial", 18),
-                                             command=lambda x=path_label, y=path_copier: Application.choose_file(x, y),
+                                             command=lambda x=path_label, y=path_copier: Application.choose_file(new_window, x, y),
                                              corner_radius=10,
                                              fg_color=("#C5D86D", "#BBD5ED"), hover_color=("#B8D04E", "#9EC3E5"),
                                              text_color="black")
@@ -626,7 +626,7 @@ class Application(CTk):
                         next_vacation_picker = DateEntry(chng_profile_frame, font=('Arial', 18), justify=CENTER,
                                                          width=12, height=40, text_color=("black", "white"),
                                                          date_pattern='dd.mm.yyyy',
-                                                         year=self.today.year+1,
+                                                         year=self.today.year + 1,
                                                          month=self.today.month,
                                                          day=self.today.day,
                                                          mindate=date(self.today.year, self.today.month,
@@ -673,7 +673,7 @@ class Application(CTk):
                                             fg_color=("#C5D86D", "#BBD5ED"), hover_color=("#B8D04E", "#9EC3E5"),
                                             text_color="black")
                     path_chooser = CTkButton(path_wrapper, text="Change", width=130, height=40, font=("Arial", 18),
-                                             command=lambda x=path_label, y=path_copier: Application.choose_file(x, y),
+                                             command=lambda x=path_label, y=path_copier: Application.choose_file(new_window, x, y),
                                              corner_radius=10,
                                              fg_color=("#C5D86D", "#BBD5ED"), hover_color=("#B8D04E", "#9EC3E5"),
                                              text_color="black")
@@ -1052,7 +1052,8 @@ class Application(CTk):
                                             fg_color=("#C5D86D", "#BBD5ED"), hover_color=("#B8D04E", "#9EC3E5"),
                                             text_color="black")
                     path_chooser = CTkButton(path_wrapper, text="Change", width=130, height=40, font=("Arial", 18),
-                                             command=lambda x=path_label, y=path_copier: Application.choose_file(x, y),
+                                             command=lambda x=path_label, y=path_copier: Application.choose_file(
+                                                 new_window, x, y),
                                              corner_radius=10,
                                              fg_color=("#C5D86D", "#BBD5ED"), hover_color=("#B8D04E", "#9EC3E5"),
                                              text_color="black")
@@ -1346,6 +1347,13 @@ class Application(CTk):
             add_btn.pack(pady=20)
             new_window.mainloop()
 
+        def del_project() -> None:
+            try:
+                self.__admin.remove_project(search_entry.get())
+                CTkMessagebox(self, message="Project was deleted", title="Success", icon="check")
+            except IndexError:
+                CTkMessagebox(self, message="There is no such projects", title="Error", icon="cancel")
+
         top_actions = CTkFrame(self.tabs.tab("Projects"), fg_color="transparent", width=1025)
         top_actions.pack(padx=10)
         search_wrapper = CTkFrame(top_actions, fg_color="transparent")
@@ -1368,10 +1376,19 @@ class Application(CTk):
                                          command=lambda x: update_projects_list)
         filter_drop_down.pack(padx=10, side="right")
 
-        add_emp_btn = CTkButton(top_actions, width=100, height=40, text="Add +", hover_color=("#B8D04E", "#9EC3E5"),
-                                fg_color=("#C5D86D", "#BBD5ED"), corner_radius=10, text_color="black",
-                                command=add_project)
-        add_emp_btn.pack(side="right")
+        top_actions_buttons = CTkFrame(top_actions, fg_color="transparent")
+        top_actions_buttons.pack(side="right")
+
+        add_proj_btn = CTkButton(top_actions_buttons, width=100, height=40, text="Add +",
+                                 hover_color=("#B8D04E", "#9EC3E5"),
+                                 fg_color=("#C5D86D", "#BBD5ED"), corner_radius=10, text_color="black",
+                                 command=add_project)
+        add_proj_btn.pack(side="left")
+        del_proj_btn = CTkButton(top_actions_buttons, width=100, height=40, text="Delete project",
+                                 hover_color=("#B8D04E", "#9EC3E5"),
+                                 fg_color=("#C5D86D", "#BBD5ED"), corner_radius=10, text_color="black",
+                                 command=del_project)
+        del_proj_btn.pack(side="right")
 
         projects_frame = CTkScrollableFrame(self.tabs.tab("Projects"), fg_color="transparent",
                                             scrollbar_button_color=("#C5D86D", "#BBD5ED"),
@@ -1558,16 +1575,17 @@ class Application(CTk):
         window.destroy()
 
     @staticmethod
-    def choose_file(p_label, p_copier) -> None:
+    def choose_file(master, p_label, p_copier) -> None:
         """
         Запитує шлях до файлу у користувача. Якщо користувач вибере файл,
         то функція змінює текст p_label на новий шлях,
         а також вставляє його в функцію копіювання шляху.
+        :param master: Вікно, яке буде батьківським для askopenfilename
         :param p_label: Надпис (CTkLabel) зі шляхом до файлу
         :param p_copier: Кнопка копіювання шляху
         :return: None
         """
-        file_name = filedialog.askopenfilename()
+        file_name = filedialog.askopenfilename(parent=master)
         if file_name:
             p_label.configure(text=file_name)
             p_copier.configure(command=lambda: pyperclip.copy(p_label.cget("text")))
