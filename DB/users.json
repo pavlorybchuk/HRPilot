@@ -1,34 +1,71 @@
 {
-  "managers": {
-    "ID000000": {
-      "name": "Pavlo",
-      "age": 20,
-      "sex": "male",
-      "phone": "+360684953513",
-      "email": "pablorybcuk@gmail.com",
-      "address": "Задвір'я, 16",
-      "hdate": "14.05.2025",
-      "seniority": 1,
-      "docs": {
-        "passport": "C:\\Users\\pablo\\OneDrive\\Документи\\203270.jpg",
-        "graduation": "C:\\Users\\pablo\\OneDrive\\Зображення\\Screenshots\\Screenshot (179).png",
-        "medcard": "C:\\Users\\pablo\\OneDrive\\Зображення\\Screenshots\\Screenshot (194).png",
-        "mil_accounting": "C:\\Users\\pablo\\OneDrive\\Зображення\\Screenshots\\Screenshot (242).png"
-      },
-      "duties": [],
-      "days": [],
-      "next_vacation": "14.05.2025",
-      "status": "normal",
-      "salary": 10000,
-      "isAdmin": "true",
-      "photo": "C:\\Users\\pablo\\OneDrive\\Зображення\\Camera Roll\\WIN_20250315_14_43_42_Pro.jpg",
-      "subordinates": [],
-      "actions_history": [],
-      "projects": [],
-      "workspace": "company",
-      "login": "Pryba2009",
-      "password": "1111",
-      "notes": ""
+    "admin": {
+        "name": "Pavlo",
+        "age": "20",
+        "sex": "Male",
+        "phone": "+380684953513",
+        "email": "pablorybcuk@gmail.com",
+        "address": "Lviv area, Hryada village, Zadvirya, 16",
+        "hdate": "14.05.2025",
+        "seniority": 5,
+        "docs": {
+            "passport": "C:\\Users\\pablo\\Downloads\\pasp_c5fad_2 (1).pdf",
+            "graduation": "C:\\Users\\pablo\\Downloads\\Master_of_Arts_in_Visual_Communication_(Graphic_Design).pdf",
+            "medcard": "C:\\Users\\pablo\\Downloads\\Medical-Cards.pdf",
+            "mil_accounting": "C:\\Users\\pablo\\Downloads\\timchasove-posvidchennya-vijskovozobovyazannogo-1-1-1.pdf"
+        },
+        "duties": [],
+        "days": [],
+        "next_vacation": "18.05.2026",
+        "status": "Normal",
+        "salary": 10000.0,
+        "photo": "C:/Users/pablo/OneDrive/Зображення/Screenshots/Screenshot (194).png",
+        "actions_history": [
+            {
+                "date_of_creating": "26.05.2025 13:07",
+                "describe": "User ID000000 hired the employee ID146613",
+                "creator_id": "ID000000",
+                "action_name": "HIRE"
+            }
+        ],
+        "projects": [],
+        "login": "pavlo2009",
+        "password": "0ffe1abd1a08215353c233d6e009613e95eec4253832a761af28ff37ac5a150c",
+        "theme": "light",
+        "staff_id": "ID000000",
+        "workspace": "Company",
+        "notes": ""
+    },
+    "employees": {
+        "ID146613": {
+            "name": "Lili Sellar",
+            "age": 0,
+            "sex": "Female",
+            "phone": "+380963423132",
+            "email": "testemail@gmail.com",
+            "address": "N Lincoln Ave, York, NE 68467, USA",
+            "hdate": "26.05.2025",
+            "seniority": 0,
+            "docs": {
+                "passport": "C:/Users/pablo/Downloads/pasp_c5fad_2 (1).pdf",
+                "graduation": "C:/Users/pablo/Downloads/pasp_c5fad_2 (1).pdf",
+                "medcard": "C:/Users/pablo/Downloads/Medical-Cards.pdf",
+                "mil_accounting": "C:/Users/pablo/Downloads/timchasove-posvidchennya-vijskovozobovyazannogo-1-1-1.pdf"
+            },
+            "duties": [],
+            "days": [
+                "Mon",
+                "Tue",
+                "Fri",
+                "Sat"
+            ],
+            "next_vacation": "26.05.2026",
+            "status": "Normal",
+            "salary": 20000.0,
+            "photo": "C:/Users/pablo/OneDrive/Робочий стіл/NMTR/images/bio&chem-teacher.jpg",
+            "workspace": "Office",
+            "position": "Common employee",
+            "rate": "9"
+        }
     }
-  }
 }
