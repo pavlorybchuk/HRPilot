@@ -184,7 +184,7 @@ class Human:
         :param duty_index: Індекс обов'язку
         :return: none
         """
-        if duty_index >= len(self.duties):
+        if duty_index >= len(self.duties) or duty_index < 0:
             raise IndexError("Duty index is out of range")
         self._duties.pop(duty_index)
 
